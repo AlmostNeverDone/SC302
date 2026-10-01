@@ -144,32 +144,22 @@ The project also demonstrates how existing users can be added to groups through 
 <br />
 <br />
 
-  
----------
-
-<h2>Results｜專題結論</h2>
 
 ---------
 
 <h2>Results｜專題結論</h2>
 
-This project provided practical experience with fundamental identity and user administration tasks in Microsoft Entra ID. The workflow covered user provisioning, sign-in validation, service license assignment, external guest onboarding, directory role assignment, and bulk user creation.
+This project demonstrated the administration of users, Microsoft 365 groups, group membership, and license provisioning within a Microsoft Entra environment. By using the Project23 group as a centralized management object, administrative tasks could be applied consistently at the group level rather than managed separately for individual users.
 
-本專題提供 Microsoft Entra ID 基礎身分與使用者管理的實務操作經驗，流程涵蓋使用者帳號建立、登入驗證、服務授權指派、外部 Guest 使用者建立、目錄角色指派，以及批次使用者建立。
+本專題實作 Microsoft Entra 環境中的使用者、Microsoft 365 群組、群組成員及授權配置管理。透過 Project23 群組作為集中式管理物件，可將管理作業一致地套用至群組，而非逐一管理個別使用者。
 
-The project demonstrated that identity administration involves more than simply creating user accounts. User properties such as usage location, user type, licensing status, and assigned directory roles can directly affect the services and administrative capabilities available to each identity. External user invitation demonstrated how Microsoft Entra ID supports collaboration with identities outside the organization while maintaining a separate Guest user classification within the tenant. The directory role exercises also demonstrated multiple administrative workflows for assigning built-in Microsoft Entra roles, while bulk user provisioning introduced a more scalable approach to creating multiple identities through CSV-based operations.
+We also involved troubleshooting differences between Microsoft Entra tenants and limitations in the current Microsoft 365 Admin Center interface. Microsoft Graph was used to verify group properties and complete the Microsoft Entra ID P2 group-based license assignment, with the result subsequently validated through the Microsoft 365 Admin Center.
 
-本專題展示身分管理不僅是建立使用者帳號，Usage Location、User Type、License 狀態以及目錄角色等使用者屬性，都可能直接影響身分可使用的服務與管理權限。外部使用者邀請流程則展示 Microsoft Entra ID 如何支援組織外部身分進行協作，同時透過 Guest 使用者類型在租戶中維持不同的身分分類。目錄角色實作展示了使用不同管理介面指派 Microsoft Entra 內建角色的方式；批次使用者建立則進一步導入以 CSV 為基礎的大量帳號建立流程，提升使用者管理的可擴展性。
-
-Overall, the project demonstrated a basic identity lifecycle workflow in Microsoft Entra ID, from initial account provisioning and service enablement to external collaboration, administrative delegation, and scalable user management.
-
-整體而言，本專題展示了 Microsoft Entra ID 中基礎的身分生命週期管理流程，從帳號建立與服務啟用，到外部協作、管理權限委派，以及可擴展的使用者管理方式。
+我們也檢視了 Microsoft Entra 租用戶之間的差異以及目前 Microsoft 365 管理中心介面存在的限制。透過 Microsoft Graph 驗證群組屬性並完成 Microsoft Entra ID P2 群組式授權指派，最後再回到 Microsoft 365 Admin Center 驗證實際結果。
 
 <br />
 <br />
 
-<br />
-<br />
 
 
 ---------
@@ -177,46 +167,13 @@ Overall, the project demonstrated a basic identity lifecycle workflow in Microso
 <h2>Security Insight｜安全洞察</h2>
 
 
-Identity Lifecycle Management (身分生命週期管理)
+Group-based identity and license management improves consistency, scalability, and auditability by associating access and service entitlements with managed groups instead of relying on repeated manual changes to individual accounts. This approach can reduce configuration errors and support more structured user lifecycle and access governance processes.
 
-User provisioning should be treated as part of an identity lifecycle rather than as an isolated account creation task. Creating an identity, validating access, assigning required services, reviewing privileges, and managing the account at scale are interconnected administrative activities.
+基於群組的身份和許可證管理透過將存取權限和服務授權與受管群組關聯，而非依賴對單一帳戶的重複手動更改，從而提高了一致性、可擴展性和可稽核能力。這種方法可以減少配置錯誤，並支援更結構化的使用者生命週期和存取治理流程。
 
-使用者建立應視為身分生命週期的一部分，而非單純的帳號建立操作。建立身分、驗證存取、指派所需服務、檢視權限，以及大量管理帳號，皆屬於彼此關聯的身分管理流程。
+The troubleshooting process also demonstrated that administrative roles, tenant boundaries, object properties, and application permissions are separate security controls. Holding the Global Administrator role does not automatically grant an application such as Microsoft Graph Explorer every API permission, while users, groups, licenses, and roles remain isolated between different Microsoft Entra tenants. Understanding these boundaries is important when diagnosing IAM issues and applying least-privilege administration.
 
-
-User Attributes and Service Access (使用者屬性與服務存取)
-
-Identity attributes can directly affect access to cloud services. During the lab, license assignment depended on the user having a valid Usage Location, demonstrating that incomplete or incorrect identity properties can cause downstream access and provisioning failures.
-
-身分屬性會直接影響雲端服務的存取與配置。本實驗中，License 指派需要使用者具備有效的 Usage Location，說明不完整或錯誤的身分屬性可能導致後續的存取與服務配置失敗。
-
-
-External Identity Management (外部身分管理)
-
-Microsoft Entra ID allows external collaborators to be represented as Guest users within the tenant. Separating external identities from internal Members helps administrators apply different access policies and maintain clearer visibility over users who originate outside the organization.
-
-Microsoft Entra ID 可將外部協作者以 Guest 使用者形式建立於租戶中。將外部身分與內部 Member 分類管理，有助於套用不同的存取政策，並提升對組織外部使用者的可視性。
-
-
-Role-Based Administrative Delegation (角色式管理權限委派)
-
-Directory roles allow administrative permissions to be delegated according to operational responsibilities rather than granting unrestricted administrative access. Built-in roles provide a structured way to separate responsibilities and support the principle of least privilege.
-
-目錄角色可依據實際管理職責委派行政權限，而非直接授予不受限制的管理權限。Microsoft Entra 內建角色提供結構化的權限分工方式，有助於實踐最小權限原則。
-
-
-Bulk Provisioning and Validation (批次建立與驗證)
-
-Bulk user creation improves scalability but also increases the impact of configuration errors. CSV-based provisioning should therefore be followed by validation of bulk operation results and the resulting user objects instead of assuming that a successful submission means every account was created successfully.
-
-批次建立使用者能提升管理效率，但設定錯誤的影響範圍也會同步擴大。因此使用 CSV 進行大量帳號建立後，應進一步驗證 Bulk Operation 結果與實際產生的使用者物件，而不能僅依據提交成功訊息判斷所有帳號皆已建立完成。
-
-
-Administrative Verification (管理操作驗證)
-
-Identity administration should include verification after each significant change. Sign-in testing, reviewing assigned licenses, confirming Guest user type, checking directory role assignments, and validating bulk-created accounts help ensure that configuration changes produce the intended result.
-
-身分管理中的重要變更完成後應進行驗證。透過登入測試、確認 License 狀態、驗證 Guest 使用者類型、檢查目錄角色，以及確認批次建立帳號結果，可確保實際設定符合原先預期。
+本次故障排除亦呈現出管理角色、Tenant 邊界、物件屬性與應用程式權限屬於不同的安全控制層級。即使帳號具備 Global Administrator 角色，也不代表 Microsoft Graph Explorer 自動擁有所有 API 權限；不同 Microsoft Entra Tenant 之間的使用者、群組、授權與角色亦彼此隔離。理解這些安全邊界，是進行 IAM 問題診斷及落實最小權限管理的重要基礎。
 
 
 <br />
