@@ -84,16 +84,16 @@ The project also demonstrates how existing users can be added to groups through 
 
 * Microsoft Azure Portal (Azure 雲端管理平台)</b>
 * Microsoft Entra ID tenant (Entra ID 租戶環境)</b>
+* Microsoft Entra ID P2 - Trial (Microsoft Entra ID P2 - 試用版)</b>
 * Microsoft Entra admin center (Microsoft Entra 管理中心)</b>
 * Microsoft 365 admin center (Microsoft 365 管理中心)</b>
 
 [Tasks]
 
-* Create a New User (建立新用戶)
-* Add a license to the user (為使用者新增許可證)
-* Invite an external user (邀請外部用戶)
-* Assign a role to a user (為使用者指派角色)
-* Bulk import users (批次導入用戶)
+* Create a Microsoft 365 Group (建立 Microsoft 365 群組)
+* Create a Dynamic Security Group for Guest Users (建立 Guest 使用者動態安全性群組)
+* Add an Existing User to a Group (將既有使用者加入群組)
+* Add Owners and Licenses to a Group (在群組中新增所有者和許可證)
 <br/>
 
 ---------
@@ -101,60 +101,46 @@ The project also demonstrates how existing users can be added to groups through 
 <h2>Practice｜實踐</h2> <p align="center">
 
 <p align="center">
-<b>Task 1-1: Create a New User Account<br/> (建立新使用者帳號)</b><br/>
-<img src="https://i.imgur.com/90xDZpo.jpeg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<b>Task 1: Create a Microsoft 365 Group<br/> (建立 Microsoft 365 群組)</b><br/>
+<img src="https://i.imgur.com/dhe9tXZ.jpeg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-* Created a new user account in Microsoft Entra ID and configured the required identity properties for cloud access.<br/>
-在 Microsoft Entra ID 中建立新的使用者帳號，並設定雲端存取所需的基本身分屬性<br/>
-<br />
-<br />
-<b>Task 1-2: Validate New User Sign-In<br/> (驗證新使用者登入)</b><br/>
-<img src="https://i.imgur.com/N3oXIvR.jpeg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-* Signed in with the newly provisioned account to verify that <br/>the user could successfully authenticate to the Microsoft Entra environment.<br/>
-使用新建立的帳號登入 Microsoft Entra 環境，確認使用者帳號能夠成功完成身分驗證<br/>
+* Created a Microsoft 365 group with assigned membership and added an existing user as a group member.<br/>
+建立使用 Assigned 成員資格的 Microsoft 365 群組，並將既有使用者加入群組<br/>
 <br />
 <br />
-<b>Task 2: Assign a License to the User<br/> (為使用者指派授權)</b><br/>
-<img src="https://i.imgur.com/dWrJHlF.jpeg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<b>Task 2-1: Create a Dynamic Security Group<br/> (建立動態安全性群組)</b><br/>
+<img src="https://i.imgur.com/UXhnRP8.jpeg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-* Assigned a Microsoft service license to the newly created user through the Microsoft 365 Admin Center.<br/>
-透過 Microsoft 365 Admin Center 為新建立的使用者指派 Microsoft 服務授權<br/>
-<br />
-<br />
-<b>Task 3: Invite an external user<br/> (邀請外部用戶)</b><br/>
-<img src="https://i.imgur.com/xvMrkGq.jpeg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-* Invited an external user to the Microsoft Entra tenant to demonstrate external identity onboarding<br/> and cross-organization access scenarios.<br/>
-邀請外部使用者加入 Microsoft Entra 租戶，以示範外部身分建立與跨組織存取情境<br/>
+* Created a security group with Dynamic User membership and configured a rule to <br/>automatically include users whose userType equals Guest.<br/>
+建立使用 Dynamic User 成員資格的安全性群組，並設定規則自動納入 userType 屬於 Guest 的使用者<br/>
 <br />
 <br />
-<b>Task 4-1: Assign an Eligible Directory Role<br/> (指派 Eligible 目錄角色)</b><br/>
-<img src="https://i.imgur.com/cVnVND5.jpeg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<b>Task 2-2: Validate Dynamic Group Membership<br/> (驗證動態群組成員)</b><br/>
+<img src="https://i.imgur.com/T6w1LCV.jpeg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-* Assigned the Attribute Definition Reader role to the user using the Eligible assignment type.<br/>
-使用 Eligible 指派方式，為使用者配置 Attribute Definition Reader 目錄角色<br/>
-<br />
-<br />
-<b>Task 4-2: Assign a Directory Role through Roles & Administrators<br/> (透過 Roles & Administrators 指派目錄角色)</b><br/>
-<img src="https://i.imgur.com/8Ex31LG.jpeg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-* Assigned the Attribute Log Reader role through the Roles & Administrators interface and verified the resulting role assignment.<br/>
-透過 Roles & Administrators 介面指派 Attribute Log Reader 角色，並驗證角色指派結果<br/>
+* Verified that Guest users were automatically populated into the dynamic security group <br/>based on the configured membership rule.<br/>
+驗證 Guest 使用者已依據設定的動態成員規則自動加入安全性群組<br/>
 <br />
 <br />
-<b>Task 5-1: Prepare the Bulk User CSV Template<br/> (準備批次使用者 CSV 範本)</b><br/>
-<img src="https://i.imgur.com/SvAymsA.jpeg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<b>Task 3: Add an Existing User to a Group<br/> (將既有使用者加入群組)</b><br/>
+<img src="https://i.imgur.com/JWzpzk2.jpeg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-* The green-bordered area contains sample data, the blue-bordered area contains newly added users, <br/>and the red-bordered area contains required data that must be filled in before uploading.<br/>
-綠色框線區域為範本資料，藍色框線區域為本次新增使用者，紅色框線處則是上傳前必填資料<br/>
+* Added an existing external user to the Microsoft 365 group through assigned group membership.<br/>
+透過 Assigned 群組成員資格，將既有外部使用者加入 Microsoft 365 群組<br/>
 <br />
 <br />
-<b>Task 5-2: Bulk Create and Validate Users<br/> (批次建立並驗證使用者)</b><br/>
-<img src="https://i.imgur.com/GuHbMdh.jpeg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<b>Task 4-1: Add an Owner to a Group<br/> (新增群組擁有者)</b><br/>
+<img src="https://i.imgur.com/65gtwYN.jpeg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-* Uploaded the CSV provisioning file and verified that multiple user accounts were successfully created in Microsoft Entra ID.<br/>
-上傳 CSV 使用者建立檔案，並確認多個使用者帳號已成功建立於 Microsoft Entra ID<br/>
+* Added an existing user as an owner of the Microsoft 365 group to demonstrate delegated group administration.<br/>
+將既有使用者新增為 Microsoft 365 群組擁有者，以示範群組管理權限委派<br/>
+<br />
+<br />
+<b>Task 4-2: Assign a License to a Group<br/> (為群組指派授權)</b><br/>
+<img src="https://i.imgur.com/wxlnFWW.jpeg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+* Assigned Microsoft Entra ID P2 to the Project23 Microsoft 365 group through Microsoft Graph and <br/>verified the group-based license assignment in the Microsoft 365 Admin Center.<br/>
+透過 Microsoft Graph 將 Microsoft Entra ID P2 指派給 Project23 Microsoft 365 群組，<br/>並於 Microsoft 365 Admin Center 驗證群組式授權結果<br/>
 <br />
 <br />
 
